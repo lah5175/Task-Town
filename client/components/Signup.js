@@ -21,6 +21,8 @@ class Signup extends React.Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
+
     this.setState({
       username: '',
       email: '',
@@ -30,7 +32,7 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <AuthForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} {...this.state} />
+      <AuthForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} submitType="Sign Up" {...this.state} />
     )
   }
 }

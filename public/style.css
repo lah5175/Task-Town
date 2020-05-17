@@ -1,5 +1,25 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
 body {
   font-family: sans-serif;
+  height: 100%;
+  margin: 0px;
+}
+
+#app {
+  height: 100%;
+}
+
+#app-div {
+  height: 100%;
 }
 
 a {
@@ -15,7 +35,63 @@ nav a {
   margin: 1em;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
+#unauth-home {
+  display: flex;
+  height: 100%;
+}
+
+#unauth-home > div {
+  width: 50%;
+  height: 100%;
+}
+
+#unauth-home-left {
+  background-color: darkgreen;
+}
+
+#unauth-home-right {
+  background-color: white;
+  color: darkgreen;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#auth-form {
+  border: 1px solid darkgreen;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+#auth-form div {
+  display: flex;
+  margin: 10px;
+}
+
+#auth-form label {
+  width: 100px;
+}
+
+#unauth-home-btns button {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: white;
+  color: darkgreen;
+  transition: all 0.3s;
+  border: 2px transparent;
+  padding: 10px;
+}
+
+#unauth-home-btns button:hover {
+  background-color: darkgreen;
+  color: white;
+}
+
+#unauth-home-btns .selected {
+  background-color: darkgreen;
+  color: white;
 }
