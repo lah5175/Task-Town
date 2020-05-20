@@ -1,14 +1,15 @@
 import React from 'react';
 import Header from './Header';
 import {Route, Switch} from 'react-router-dom';
-import HomeView from './HomeView';
+import {HomeView, TaskView} from './index';
 
 const Main = props => {
   return (
     <div id="main">
       <Header />
       <Switch>
-        <Route to="/" component={HomeView} />
+        <Route path="/tasks" component={TaskView} />
+        <Route path="/" component={HomeView} />
       </Switch>
     </div>
   )

@@ -145,6 +145,7 @@ header h1 {
 
 #main {
   height: 100%;
+  overflow: hidden;
 }
 
 #main-container {
@@ -161,4 +162,30 @@ header h1 {
   flex-grow: 1;
   background-color: lightgray;
   height: 100%;
+}
+
+#task-container {
+  display: flex;
+  justify-content: center;
+  height: 80%;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.task-list {
+  background-color: lightgray;
+  width: 400px;
+  height: 90%;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.task-list h1 {
+  margin: 0px;
+  padding-left: 10px;
+  padding-top: 10px;
+  background-color: black;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
