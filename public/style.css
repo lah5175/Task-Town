@@ -30,9 +30,56 @@ label {
   display: block;
 }
 
+nav {
+  background-color: black;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
 nav a {
-  display: inline-block;
-  margin: 1em;
+  height: 100%;
+  width: 200px;
+  color: white;
+  font-size: larger;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s all;
+}
+
+nav a:hover {
+  background-color: orange;
+  color: black;
+}
+
+.active {
+  background-color: orange;
+  color: black;
+}
+
+header {
+  background-color: darkgreen;
+  color: white;
+  height: 150px;
+}
+
+#header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+}
+
+header h1 {
+  margin: 0px;
+  font-size: 52px;
+  color: white;
+}
+
+#header-content div {
+  padding: 30px;
 }
 
 #unauth-home {
@@ -94,4 +141,24 @@ nav a {
 #unauth-home-btns .selected {
   background-color: darkgreen;
   color: white;
+}
+
+#main {
+  height: 100%;
+}
+
+#main-container {
+  display: flex;
+  height: 100%;
+}
+
+#town-container {
+  flex-grow: 3;
+  height: 100%;
+}
+
+#town-sidebar {
+  flex-grow: 1;
+  background-color: lightgray;
+  height: 100%;
 }
