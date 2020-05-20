@@ -1,12 +1,12 @@
 import React from 'react';
-import AuthForm from './AuthForm';
+import {connect} from 'react-redux';
+import {login} from '../store';
 
 class Login extends React.Component {
   constructor() {
     super();
     this.state = {
       username: '',
-      email: '',
       password: ''
     }
 
@@ -22,19 +22,36 @@ class Login extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const {username, password} = this.state;
+    this.props.login(username, password);
 
     this.setState({
       username: '',
-      email: '',
       password: ''
     })
   }
 
   render() {
     return (
-      <AuthForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} submitType="Log In" {...this.state} />
+      <form id="auth-form" onSubmit={this.handleSubmit}>
+        <div>
+          <label htmlFor="username">Username or Email</label>
+          <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+        </div>
+
+        <div>
+          <label htmlFor="password">Password</label>
+          <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+        </div>
+
+        <button type="submit">Log In</button>
+      </form>
     )
   }
 }
 
-export default Login;
+const mapDispatchToProps = dispatch => ({
+  login: (user, password) => dispatch(login(user, password))
+})
+
+export default connect(null, mapDispatchToProps)(Login);

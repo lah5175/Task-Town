@@ -4,11 +4,22 @@ module.exports = router;
 
 router.post("/login", async (req, res, next) => {
   try {
-    const user = await User.findOne({
-      where: {
-        email: req.body.email
-      }
-    });
+    let user;
+
+    if (req.body.user.includes('@')) {
+      user = await User.findOne({
+        where: {
+          email: req.body.user
+        }
+      });
+    }
+    else {
+      user = await User.findOne({
+        where: {
+          username: req.body.user
+        }
+      })
+    }
 
     if (!user) {
       res.status(404).send("User not found!");
@@ -27,8 +38,9 @@ router.post("/login", async (req, res, next) => {
 
 router.post("/signup", async (req, res, next) => {
   try {
-    const user = await User.create(req.body);
-    console.log(user);
+    const {username, email, password} = req.body;
+    const user = await User.create({username, email, password});
+
     req.login(user, err => {
       if (err) next(err);
       else res.json(user);

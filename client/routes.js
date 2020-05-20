@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {UnauthHome} from './components'
+import {UnauthHome, Main} from './components'
 import {me} from './store'
 
 /**
@@ -14,11 +14,20 @@ class Routes extends Component {
   }
 
   render() {
-    return (
-      <Switch>
-        <Route path="/" component={UnauthHome} />
-      </Switch>
-    )
+    if (!this.props.isLoggedIn) {
+      return (
+        <Switch>
+          <Route path="/" component={UnauthHome} />
+        </Switch>
+      )
+    }
+    else {
+      return (
+        <Switch>
+          <Route path="/" component={Main} />
+        </Switch>
+      )
+    }
   }
 }
 

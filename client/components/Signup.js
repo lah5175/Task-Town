@@ -1,5 +1,6 @@
 import React from 'react';
-import AuthForm from './AuthForm';
+import {connect} from 'react-redux';
+import {signup} from '../store';
 
 class Signup extends React.Component {
   constructor() {
@@ -22,6 +23,8 @@ class Signup extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const {username, email, password} = this.state;
+    this.props.signup(username, email, password);
 
     this.setState({
       username: '',
@@ -32,9 +35,30 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <AuthForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} submitType="Sign Up" {...this.state} />
+      <form id="auth-form" onSubmit={this.handleSubmit}>
+        <div>
+          <label htmlFor="username">Username</label>
+          <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+        </div>
+
+        <div>
+          <label htmlFor="email">Email</label>
+          <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+        </div>
+
+        <div>
+          <label htmlFor="password">Password</label>
+          <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+        </div>
+
+        <button type="submit">Sign Up</button>
+      </form>
     )
   }
 }
 
-export default Signup;
+const mapDispatchToProps = dispatch => ({
+  signup: (username, email, password) => dispatch(signup(username, email, password))
+})
+
+export default connect(null, mapDispatchToProps)(Signup);
