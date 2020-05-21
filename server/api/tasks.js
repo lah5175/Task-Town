@@ -18,12 +18,10 @@ router.get('/user/:userId', async (req, res, next) => {
 
 router.post('/user/:userId', async (req, res, next) => {
   try {
-    const {name, description, complete, streak} = req.body;
+    const {name, description} = req.body;
     const task = await Task.create({
       name, 
       description, 
-      complete, 
-      streak, 
       userId: req.params.userId
     });
 

@@ -1,9 +1,11 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {withRouter, Route, Switch} from 'react-router-dom'
-import PropTypes from 'prop-types'
-import {UnauthHome, Main} from './components'
-import {me} from './store'
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {withRouter, Route, Switch} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import {UnauthHome, Main} from './components';
+import {me} from './store';
+import FormOverlay from './components/TaskForms/FormOverlay';
+import {ADD_DAILY_FORM} from './components/FormConstants';
 
 /**
  * COMPONENT
@@ -16,16 +18,15 @@ class Routes extends Component {
   render() {
     if (!this.props.isLoggedIn) {
       return (
-        <Switch>
-          <Route path="/" component={UnauthHome} />
-        </Switch>
+        <Route path="/" component={UnauthHome} />
       )
     }
     else {
       return (
-        <Switch>
+        <div id="routes">
+          <Route path="/tasks/add" render={routeProps => <FormOverlay {...routeProps} formType={ADD_DAILY_FORM} />} />
           <Route path="/" component={Main} />
-        </Switch>
+        </div>
       )
     }
   }
