@@ -8,6 +8,9 @@ const Checklist = require('./checklist');
 
 // ASSOCIATIONS
 
+User.hasMany(Daily);
+User.hasMany(ToDo);
+
 Daily.hasMany(Checklist);
 ToDo.hasMany(Checklist);
 
