@@ -1,11 +1,17 @@
 import React from 'react';
-import {connect} from 'react-router-dom';
+import {connect} from 'react-redux';
+import TaskBox from './ListComponents/TaskBox';
+import { fetchTasks } from '../store';
 
 class TaskView extends React.Component {
   constructor() {
     super();
 
     this.handleAddTask = this.handleAddTask.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchTasks(this.props.userId);
   }
 
   handleAddTask() {
@@ -20,6 +26,10 @@ class TaskView extends React.Component {
             <h1>Tasks</h1>
             <button type="button" className="add-task-btn noselect" onClick={this.handleAddTask}>+</button>
           </div>
+          {
+            this.props.tasks.length &&
+            this.props.tasks.map(task => <TaskBox key={`task${task.id}`} task={task} />)
+          }
         </div>
         <div className="task-list">
           <div className="task-header">
@@ -38,4 +48,13 @@ class TaskView extends React.Component {
   }
 }
 
-export default TaskView;
+const mapStateToProps = state => ({
+  tasks: state.task,
+  userId: state.user.id
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchTasks: userId => dispatch(fetchTasks(userId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskView);

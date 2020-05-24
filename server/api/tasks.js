@@ -36,9 +36,9 @@ router.post('/user/:userId', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
   try {
-    const task = await Daily.findByPK(req.body.id);
+    const task = await Daily.findByPk(req.body.id);
     if (task) {
-      const updatedTask = await Daily.update(req.body);
+      const updatedTask = await task.update(req.body);
       res.json(updatedTask);
     }
     else {

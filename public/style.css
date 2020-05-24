@@ -78,6 +78,12 @@ header {
   height: 150px;
 }
 
+input[type="checkbox"] {
+  background-color: white;
+  height: 30px;
+  width: 30px;
+}
+
 #header-content {
   display: flex;
   justify-content: space-between;
@@ -192,6 +198,8 @@ header h1 {
   height: 90%;
   margin: 20px;
   border-radius: 10px;
+  border: 1px solid black;
+  overflow: auto;
 }
 
 .task-list h1 {
@@ -208,6 +216,8 @@ header h1 {
   border-top-right-radius: 10px;
   display: flex;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
 }
 
 .add-task-btn {
@@ -256,4 +266,24 @@ header h1 {
 
 textarea {
   margin-bottom: 20px;
+}
+
+.task-box {
+  cursor: pointer;
+  background-color: orange;
+  border: 1px solid black;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.task-box:hover {
+  background-color: yellow;
+}
+
+.task-box p {
+  margin: 0px;
 }
