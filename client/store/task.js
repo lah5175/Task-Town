@@ -35,7 +35,7 @@ const deleteTask = taskId => ({
 
 export const fetchTasks = userId => async dispatch => {
   try {
-    const {data} = await axios.get(`/tasks/user/${userId}`);
+    const {data} = await axios.get(`/api/tasks/user/${userId}`);
     dispatch(setTasks(data));
   } 
   catch (error) {
@@ -45,7 +45,8 @@ export const fetchTasks = userId => async dispatch => {
 
 export const addTaskThunk = (userId, task) => async dispatch => {
   try {
-    const {data} = await axios.post(`/tasks/user/${userId}`, task);
+    const {data} = await axios.post(`/api/tasks/user/${userId}`, task);
+    console.log(data)
     dispatch(addTask(data));
   } 
   catch (error) {
@@ -55,7 +56,7 @@ export const addTaskThunk = (userId, task) => async dispatch => {
 
 export const updateTaskThunk = task => async dispatch => {
   try {
-    const {data} = await axios.put('/tasks', task);
+    const {data} = await axios.put('/api/tasks', task);
     dispatch(updateTask(data));
   } 
   catch (error) {
@@ -65,7 +66,7 @@ export const updateTaskThunk = task => async dispatch => {
 
 export const deleteTaskThunk = taskId => async dispatch => {
   try {
-    await axios.delete(`/tasks/${taskId}`);
+    await axios.delete(`/api/tasks/${taskId}`);
     dispatch(deleteTask(taskId));
   } 
   catch (error) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {updateTaskThunk} from '../../store';
-import {DailyForm} from './DailyForm';
+import DailyForm from './DailyForm';
 
 class UpdateDaily extends React.Component {
   constructor() {

@@ -240,8 +240,20 @@ header h1 {
   color: white;
 }
 
-form {
+#add-daily-form {
   background-color: white;
   height: 400px;
   width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#add-daily-form input {
+  margin-bottom: 20px;
+}
+
+textarea {
+  margin-bottom: 20px;
 }

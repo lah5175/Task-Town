@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const {Task} = require('../db');
+const {Daily} = require('../db/models');
 
 // Get all tasks for a user
 
 router.get('/user/:userId', async (req, res, next) => {
   try {
-    const tasks = await Task.findAll({where: {userId: req.params.userId}});
+    const tasks = await Daily.findAll({where: {userId: req.params.userId}});
     res.json(tasks);
   } 
   catch (error) {
@@ -19,13 +19,13 @@ router.get('/user/:userId', async (req, res, next) => {
 router.post('/user/:userId', async (req, res, next) => {
   try {
     const {name, description} = req.body;
-    const task = await Task.create({
+    const daily = await Daily.create({
       name, 
       description, 
       userId: req.params.userId
     });
 
-    res.json(task);
+    res.json(daily);
   } 
   catch (error) {
     next(error);
@@ -36,9 +36,9 @@ router.post('/user/:userId', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
   try {
-    const task = await Task.findByPK(req.body.id);
+    const task = await Daily.findByPK(req.body.id);
     if (task) {
-      const updatedTask = await task.update(req.body);
+      const updatedTask = await Daily.update(req.body);
       res.json(updatedTask);
     }
     else {
@@ -54,7 +54,7 @@ router.put('/', async (req, res, next) => {
 
 router.delete('/:taskId', async (req, res, next) => {
   try {
-    const task = await Task.findByPK(req.params.taskId);
+    const task = await Daily.findByPK(req.params.taskId);
     await task.destroy();
     res.sendStatus(204);
   } 
