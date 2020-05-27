@@ -40,6 +40,27 @@ const User = db.define(
     },
     googleId: {
       type: Sequelize.STRING
+    },
+    gold: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0,
+      validate: {
+        min: 0
+      }
+    },
+    wood: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0,
+      validate: {
+        min: 0
+      }
+    },
+    stone: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0,
+      validate: {
+        min: 0
+      }
     }
   },
   {

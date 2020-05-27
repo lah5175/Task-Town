@@ -21,6 +21,11 @@ class Header extends React.Component {
         <div id="header-content">
           <div id="header-logo">
             <Link to="/home"><h1>Task Town</h1></Link>
+            <div id="resources">
+              <p>Gold: {this.props.user.gold}</p>
+              <p>Wood: {this.props.user.wood}</p>
+              <p>Stone: {this.props.user.stone}</p>
+            </div>
           </div>
           <div id="header-btns">
             <button type="button" onClick={this.handleLogout}>Log Out</button>
@@ -32,8 +37,12 @@ class Header extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  user: state.user
+})
+
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout())
 })
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

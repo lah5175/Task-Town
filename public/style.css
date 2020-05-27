@@ -98,8 +98,21 @@ header h1 {
   color: white;
 }
 
-#header-content div {
+#header-logo {
+  display: flex;
+}
+
+#header-content > div {
   padding: 30px;
+}
+
+#resources {
+  padding: 0px;
+  margin-left: 50px;
+}
+
+#resources p {
+  margin: 0px;
 }
 
 #unauth-home {
