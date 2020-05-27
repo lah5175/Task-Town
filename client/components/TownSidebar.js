@@ -8,7 +8,10 @@ class TownSidebar extends React.Component {
 
   render() {
     return (
-      <div id="town-sidebar"></div>
+      <div id="town-sidebar">
+        <h2>Structures</h2>
+        <div id="town-buildings"></div>
+      </div>
     )
   }
 }

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const User = require("../db/models/user");
+const {User, GameState} = require('../db/models');
 module.exports = router;
 
 router.post("/login", async (req, res, next) => {
@@ -10,14 +10,16 @@ router.post("/login", async (req, res, next) => {
       user = await User.findOne({
         where: {
           email: req.body.user
-        }
+        },
+        include: GameState
       });
     }
     else {
       user = await User.findOne({
         where: {
           username: req.body.user
-        }
+        },
+        include: GameState
       })
     }
 
@@ -40,10 +42,11 @@ router.post("/signup", async (req, res, next) => {
   try {
     const {username, email, password} = req.body;
     const user = await User.create({username, email, password});
+    const gameState = await GameState.create({userId: user.id});
 
     req.login(user, err => {
       if (err) next(err);
-      else res.json(user);
+      else res.json({user, gameState});
     });
   } catch (error) {
     next(error);

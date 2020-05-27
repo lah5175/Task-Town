@@ -15,7 +15,7 @@ const defaultUser = {};
 /**
  * ACTION CREATORS
  */
-const getUser = user => ({ type: GET_USER, user });
+const getUser = data => ({ type: GET_USER, data });
 const removeUser = () => ({ type: REMOVE_USER });
 
 /**
@@ -80,7 +80,7 @@ export const logout = () => async dispatch => {
 export default function(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
-      return action.user;
+      return action.data.user || defaultUser;
     case REMOVE_USER:
       return defaultUser;
     default:

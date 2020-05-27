@@ -22,9 +22,9 @@ class Header extends React.Component {
           <div id="header-logo">
             <Link to="/home"><h1>Task Town</h1></Link>
             <div id="resources">
-              <p>Gold: {this.props.user.gold}</p>
-              <p>Wood: {this.props.user.wood}</p>
-              <p>Stone: {this.props.user.stone}</p>
+              <p>Gold: {this.props.gameState.gold}</p>
+              <p>Wood: {this.props.gameState.wood}</p>
+              <p>Stone: {this.props.gameState.stone}</p>
             </div>
           </div>
           <div id="header-btns">
@@ -38,7 +38,7 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  gameState: state.gameState
 })
 
 const mapDispatchToProps = dispatch => ({
