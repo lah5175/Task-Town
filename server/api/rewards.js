@@ -4,7 +4,7 @@ const {Reward, RewardObjective} = require('../db/models');
 
 // Get all rewards for a single user
 
-router.get('/users/:userId', async (req, res, next) => {
+router.get('/user/:userId', async (req, res, next) => {
   try {
     const rewards = await Reward.findAll({
       where: {userId: req.params.userId},
@@ -19,7 +19,7 @@ router.get('/users/:userId', async (req, res, next) => {
 
 // Add a new reward
 
-router.post('/users/:userId', async (req, res, next) => {
+router.post('/user/:userId', async (req, res, next) => {
   try {
     const {name, rewardType, rewardAmount} = req.body;
     const newReward = await Reward.create({
